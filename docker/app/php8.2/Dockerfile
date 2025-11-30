@@ -36,5 +36,7 @@ COPY ./php-config/*.ini /usr/local/etc/php/conf.d/
 
 WORKDIR /var/www/html
 RUN chown -R www-data:www-data /var/www
+# Configure git to not prompt for credentials
+RUN git config --global --add safe.directory /var/www/html
 EXPOSE 9000
 CMD ["php-fpm"]
